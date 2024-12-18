@@ -1,0 +1,23 @@
+{
+  "name": "finetune",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@huggingface/inference": "^2.8.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.77.0",
+    "pdfkit": "^0.15.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/pdfkit": "^0.13.7"
+  }
+}
