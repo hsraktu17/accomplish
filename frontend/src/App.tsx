@@ -41,11 +41,9 @@ function App() {
     e.preventDefault();
     if (!generalQuestion.trim()) return;
 
-    // Add user message to chat
     setChat([...chat, { type: "user", text: generalQuestion }]);
 
     try {
-      // Make API call to backend
       const response = await fetch('/chat', {
         method: 'POST',
         headers: {
@@ -59,22 +57,18 @@ function App() {
       }
 
       const data = await response.json();
-      
-      // Add AI response to chat
       setChat(prevChat => [
         ...prevChat,
         { type: "agent", text: data.response }
       ]);
     } catch (error) {
       console.error('Error:', error);
-      // Add error message to chat
       setChat(prevChat => [
         ...prevChat,
-        { type: "agent", text: "Sample response to your question." }
+        { type: "agent", text: "Sorry, there was an error processing your request." }
       ]);
     }
 
-    // Clear input field
     setGeneralQuestion('');
   };
 
