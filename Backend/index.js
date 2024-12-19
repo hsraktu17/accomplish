@@ -38,17 +38,17 @@ app.post("/ask", async (req, res) => {
   try {
     if (currentQuestionIndex < businessQuestions.length) {
       if (message) {
-        // Add user's answer to chat history
+        
         chatHistory.push({ role: "user", content: message });
       }
 
-      // Ask the next business-related question
+      
       const nextQuestion = businessQuestions[currentQuestionIndex];
       chatHistory.push({ role: "model", content: nextQuestion });
       currentQuestionIndex++;
       return res.json({ response: nextQuestion, chatHistory });
     } else {
-      // Continue normal conversation after questions are done
+      
       chatHistory.push({ role: "user", content: message });
       const modelResponse = await apicall(message);
       chatHistory.push({ role: "model", content: modelResponse });
@@ -65,7 +65,7 @@ app.get("/generate-report", (req, res) => {
     const doc = new pdfkit();
     const filePath = path.join(__dirname, "business_report.pdf");
 
-    // Create PDF
+    
     doc.pipe(fs.createWriteStream(filePath));
 
     doc.fontSize(20).text("Business Chat Report", { align: "center" });
